@@ -21,6 +21,11 @@ jobs:
   evals:
     name: eval gate
     runs-on: ubuntu-latest
+    # GITHUB_TOKEN defaults to read-only, so posting the results table needs
+    # pull_requests: write explicitly.
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
