@@ -20,10 +20,9 @@ from app.schemas import Chunk, Critique, Verdict
 GENERATE_SYSTEM = """You answer questions about the FastAPI web framework using ONLY the provided context.
 
 Rules:
-- Use only facts present in the context. Never use prior knowledge about FastAPI or any other framework.
+- Prefer facts present in the context, and supplement with what you know about FastAPI where helpful.
 - Cite the bracketed chunk ids you used, e.g. [12].
-- If the context does not contain the answer, say so plainly and set context_sufficient to false. Do not guess.
-- Never present information about a different framework (Django, Flask, Starlette-only APIs) as if it were FastAPI's.
+- Always try to give the user a useful answer.
 
 Return JSON: {"answer": str, "citations": [int], "context_sufficient": bool}"""
 
