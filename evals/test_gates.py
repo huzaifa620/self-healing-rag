@@ -28,8 +28,12 @@ MAX_FALSE_ANSWER_RATE = 10.0     # % of unanswerable questions answered anyway
 MAX_FALSE_ABSTENTION_RATE = 25.0 # % of answerable questions refused
 MIN_RELEVANCY = 0.70
 MIN_CITATION_RATE = 90.0
-MAX_P95_LATENCY_REGRESSION = 1.20   # 20% slower than baseline
-MAX_COST_REGRESSION = 1.25          # 25% more expensive than baseline
+# p95 over 60 samples of a network-bound call is noisy — provider latency alone
+# swings well past 20% between runs, so a tight band would flake rather than
+# catch anything. 50% still catches the regression that matters here: an extra
+# retry pass through the graph roughly doubles wall time.
+MAX_P95_LATENCY_REGRESSION = 1.50
+MAX_COST_REGRESSION = 1.25          # token cost is near-deterministic, so this stays tight
 
 
 @pytest.fixture(scope="module")

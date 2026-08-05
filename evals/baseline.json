@@ -1,20 +1,20 @@
 {
-  "sha": "nogit",
+  "sha": "4d2d233",
   "gen_model": "gpt-4o-mini",
-  "judge_model": "gpt-4o-mini",
-  "judge_cross_provider": false,
+  "judge_model": "claude-haiku-4-5",
+  "judge_cross_provider": true,
   "summary": {
     "n_total": 60,
     "n_answerable": 45,
     "n_unanswerable": 15,
-    "hallucination_rate": 0.0,
+    "hallucination_rate": 4.4,
     "false_answer_rate": 0.0,
     "false_abstention_rate": 0.0,
-    "answer_relevancy": 0.996,
-    "key_fact_coverage": 0.864,
+    "answer_relevancy": 0.958,
+    "key_fact_coverage": 0.86,
     "citation_rate": 100.0,
-    "p50_latency_ms": 3663,
-    "p95_latency_ms": 6933,
-    "cost_per_query_usd": 0.000499
+    "p50_latency_ms": 3942,
+    "p95_latency_ms": 8384,
+    "cost_per_query_usd": 0.0005
   }
 }

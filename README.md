@@ -10,22 +10,33 @@ Most RAG demos prove someone can wire up a retrieval chain. Almost none prove th
 
 ## Results
 
-60-question golden set — 45 answerable from the corpus, 15 deliberately unanswerable. Generator `gpt-4o-mini`.
-
-> **Judge caveat, stated up front:** this run was judged by `gpt-4o-mini` — the generator's own model. Cross-provider judging with `claude-haiku-4-5` is implemented and activates whenever `ANTHROPIC_API_KEY` is set, but the numbers below were *not* produced that way, and same-provider judging is the weaker methodology (see [Design decisions](#design-decisions)). Every results file records `judge_model` and `judge_cross_provider` so this can never be ambiguous.
+60-question golden set — 45 answerable from the corpus, 15 deliberately unanswerable. Generator `gpt-4o-mini`, judge `claude-haiku-4-5` (a different provider on purpose).
 
 | Metric | Result | Gate |
 |---|---|---|
-| **Hallucination rate** — answered questions judged ungrounded | **0.0 %** | ≤ 5 % |
+| **Hallucination rate** — answered questions judged ungrounded | **4.4 %** | ≤ 5 % |
 | **False-answer rate** — unanswerable questions it answered anyway | **0.0 %** | ≤ 10 % |
 | **False-abstention rate** — answerable questions it refused | **0.0 %** | ≤ 25 % |
-| Answer relevancy (0–1) | 0.996 | ≥ 0.70 |
-| Key-fact coverage (0–1) | 0.864 | — |
+| Answer relevancy (0–1) | 0.958 | ≥ 0.70 |
+| Key-fact coverage (0–1) | 0.860 | — |
 | Citation rate | 100 % | ≥ 90 % |
-| p50 / p95 latency | 3.7 s / 6.9 s | p95 ≤ baseline +20 % |
+| p50 / p95 latency | 3.9 s / 8.4 s | p95 ≤ baseline +50 % |
 | Cost per query | $0.0005 | ≤ baseline +25 % |
 
-Full run: 60 questions in 37 s, about $0.04 all in.
+Full run: 60 questions in 47 s, about $0.10 all in.
+
+### The cross-provider judge changed the answer
+
+The same set judged by the generator's own model (`gpt-4o-mini`) scored **0.0 %** hallucination and 0.996 relevancy. Swapping in `claude-haiku-4-5` moved it to **4.4 %** and 0.958 — on identical answers.
+
+The stricter judge was right. This is one of the two it caught:
+
+> **A:** "...you can specify the `status_code` parameter in your path operation decorators. **If you want to return different status codes based on conditions, you can return a `JSONResponse` directly and set the `status_code` there as well.**"
+> **Judge:** *"...this technique is not mentioned in the provided CONTEXT. The rest of the answer is well-supported."*
+
+That claim is perfectly true of FastAPI. It is not in the chunks the answer cited — which is the definition of ungrounded, and precisely the kind of fluent, correct-sounding addition a model is disposed to accept from itself. Same-provider judging reported a 0 % hallucination rate for a system that hallucinates 4.4 % of the time.
+
+The second catch is more debatable: the judge penalised an answer for *omitting* `response_class=HTMLResponse`, which this harness scores as key-fact coverage rather than grounding. Counting it makes the headline number worse, so it stays counted. Tuning a judge until the metric improves is how you end up with a number that measures nothing.
 
 The false-abstention row matters as much as the first one. Abstaining on everything scores a perfect hallucination rate and a perfect false-answer rate, so the gate also fails if the system refuses more than 25 % of questions it can actually answer. Safety metrics are only meaningful next to a usefulness metric.
 
@@ -139,7 +150,8 @@ There is deliberately **no** LLM-based "is this on topic?" check. The graph alre
 ## Known limitations
 
 - **Retrieval is a numpy scan.** At 2,052 chunks it's sub-millisecond and an ANN index would be pure overhead. Past roughly 50k chunks this needs FAISS or pgvector; the interface is two functions in `app/retrieval.py`.
-- **The judge is noisy on terse answers.** Probing it with a deliberately short but correct answer produced a false "ungrounded". Real generated answers are longer and don't trigger it, so it doesn't affect the reported numbers — but a single judge with a single prompt is the weakest link here. A 3-judge panel with majority voting is the obvious next step.
+- **The judge is a single model with a single prompt — the weakest link here.** It is noisy on terse answers (a deliberately short but correct probe answer came back "ungrounded"), and it still occasionally scores an omission as a grounding failure despite being told not to. Both directions of error are visible in the numbers above. A 3-judge panel with majority voting is the obvious next step.
+- **Judge cost dominates.** Answering 60 questions costs about $0.03; judging them with Haiku costs $0.07. Grading is more expensive than the system being graded, which is worth knowing before running this per-commit on a large set.
 - **Guardrails are regex heuristics, not classifiers.** They catch the common instruction-override phrasings and will miss obfuscated or multilingual injections.
 - **60 questions is a small set.** Enough to catch a real regression, not enough for tight confidence intervals on a 1-in-45 failure. It grows when a real failure is found — that's the actual workflow, not a target to hit up front.
 - **One corpus, one language, one framework.** Nothing here has been tested against a corpus where the right answer is spread across many documents.
