@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# transient clone used only by corpus/build_corpus.py
+corpus/.src/
+
+# editor/agent tooling
+.claude/

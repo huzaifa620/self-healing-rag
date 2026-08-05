@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>self-healing-rag — eval history</title>
+<style>
+ :root{color-scheme:light dark;--bg:#fff;--fg:#111;--mut:#666;--line:#e4e4e4}
+ @media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e8e8ea;--mut:#9aa0a6;--line:#2a2d35}}
+ body{margin:0;padding:2.5rem 1rem;background:var(--bg);color:var(--fg);
+      font:16px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+ main{max-width:760px;margin:0 auto} h1{font-size:1.4rem;margin:0 0 .25rem}
+ p.sub{color:var(--mut);margin:0 0 1.75rem}
+ table{width:100%;border-collapse:collapse}
+ th,td{text-align:left;padding:.6rem .5rem;border-bottom:1px solid var(--line)}
+ .num{font-variant-numeric:tabular-nums;white-space:nowrap;width:7rem}
+ .sparkcell{width:120px} .spark{width:110px;height:30px;display:block}
+ .nodata{color:var(--mut);font-size:.8rem}
+ footer{margin-top:2rem;color:var(--mut);font-size:.85rem}
+</style></head><body><main>
+<h1>self-healing-rag — eval history</h1>
+<p class="sub">1 run(s). Every push runs the golden set and fails the build if the
+hallucination rate exceeds 5% or the system answers more than 10% of the questions it should refuse.</p>
+<table><thead><tr><th>metric</th><th class="num">latest</th><th>trend</th></tr></thead>
+<tbody><tr><td>Hallucination rate</td><td class='num'>0.0%</td><td class='sparkcell'><span class="nodata">needs 2+ runs</span></td></tr><tr><td>False-answer rate (unanswerable)</td><td class='num'>0.0%</td><td class='sparkcell'><span class="nodata">needs 2+ runs</span></td></tr><tr><td>False-abstention rate</td><td class='num'>0.0%</td><td class='sparkcell'><span class="nodata">needs 2+ runs</span></td></tr><tr><td>Answer relevancy</td><td class='num'>0.996</td><td class='sparkcell'><span class="nodata">needs 2+ runs</span></td></tr><tr><td>Key-fact coverage</td><td class='num'>0.864</td><td class='sparkcell'><span class="nodata">needs 2+ runs</span></td></tr><tr><td>Citation rate</td><td class='num'>100.0%</td><td class='sparkcell'><span class="nodata">needs 2+ runs</span></td></tr><tr><td>p95 latency</td><td class='num'>6933ms</td><td class='sparkcell'><span class="nodata">needs 2+ runs</span></td></tr><tr><td>Cost per query</td><td class='num'>$0.000499</td><td class='sparkcell'><span class="nodata">needs 2+ runs</span></td></tr></tbody></table>
+<footer>
+ latest run <code>nogit</code> ·
+ generator <code>gpt-4o-mini</code> ·
+ judge <code>gpt-4o-mini</code>
+ (cross-provider: False) ·
+ 45 answerable + 15 unanswerable questions
+</footer>
+</main></body></html>

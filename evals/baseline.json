@@ -1,0 +1,20 @@
+{
+  "sha": "nogit",
+  "gen_model": "gpt-4o-mini",
+  "judge_model": "gpt-4o-mini",
+  "judge_cross_provider": false,
+  "summary": {
+    "n_total": 60,
+    "n_answerable": 45,
+    "n_unanswerable": 15,
+    "hallucination_rate": 0.0,
+    "false_answer_rate": 0.0,
+    "false_abstention_rate": 0.0,
+    "answer_relevancy": 0.996,
+    "key_fact_coverage": 0.864,
+    "citation_rate": 100.0,
+    "p50_latency_ms": 3663,
+    "p95_latency_ms": 6933,
+    "cost_per_query_usd": 0.000499
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "chunk_chars": 800,
+  "chunk_overlap": 150,
+  "chunks_sha256": "694d7cbe6798a473df8aae82c713ec29aaa5f87e7de6b6022d5e8b707e891b7d",
+  "commit": "95f8322ee1dcda7ceace7b1c4f6c9915b36d748f",
+  "embedding_dims": 512,
+  "embedding_model": "text-embedding-3-small",
+  "n_chunks": 2052,
+  "n_sources": 141,
+  "repo": "https://github.com/fastapi/fastapi",
+  "tag": "0.141.1"
+}

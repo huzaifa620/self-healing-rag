@@ -1,0 +1,34 @@
+# Guardrail policy. Edited by humans, not code — no deploy needed to change it.
+
+corpus_topic: "the FastAPI web framework"
+
+input:
+  # Redact PII before it reaches the model or any log.
+  pii_action: redact          # redact | block | allow
+  detect:
+    - credit_card             # Luhn-validated, so "1234 5678 9012 3456" is not a false positive
+    - email
+    - phone
+
+  # Phrases that try to override the system prompt. Heuristic, not a classifier —
+  # see README "Known limitations".
+  block_prompt_injection: true
+
+  max_question_chars: 1000
+
+output:
+  require_citations: true     # an answer with no citations is treated as ungrounded
+  max_answer_chars: 2000
+
+graph:
+  retrieve_k: 8            # 6 lost correct chunks to heading-keyword near-misses
+  max_attempts: 2             # 1 initial + up to 2 reformulated retries, then abstain
+
+  # The whole promise of this service: once retries are exhausted it abstains
+  # rather than shipping its best ungrounded guess. Setting this false makes
+  # the tagline a lie.
+  abstain_when_exhausted: true
+
+abstain_message: >-
+  I don't have enough information in the indexed FastAPI documentation to answer
+  that accurately.

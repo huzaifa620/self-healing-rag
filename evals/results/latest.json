@@ -1,0 +1,1219 @@
+{
+  "sha": "nogit",
+  "gen_model": "gpt-4o-mini",
+  "judge_model": "gpt-4o-mini",
+  "judge_cross_provider": false,
+  "wall_seconds": 36.8,
+  "judge_cost_usd": 0.00668,
+  "summary": {
+    "n_total": 60,
+    "n_answerable": 45,
+    "n_unanswerable": 15,
+    "hallucination_rate": 0.0,
+    "false_answer_rate": 0.0,
+    "false_abstention_rate": 0.0,
+    "answer_relevancy": 0.996,
+    "key_fact_coverage": 0.864,
+    "citation_rate": 100.0,
+    "p50_latency_ms": 3663,
+    "p95_latency_ms": 6933,
+    "cost_per_query_usd": 0.000499
+  },
+  "records": [
+    {
+      "id": "a000",
+      "question": "How can I use HTTP status codes in my FastAPI application?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can use HTTP status codes in your FastAPI application by specifying the `status_code` parameter in your path operation decorators (like `@app.get()`, `@app.post()`, etc.). You can either pass an integer directly or use named constants from the `status` module imported from `fastapi`. For example:\n\n```python\nfrom fastapi import FastAPI, status\n\napp = FastAPI()\n\n@app.post(\"/items/\", status_code=status.HTTP_201_CREATED)\nasync def create_item(name: str):\n    return {\"name\": name}\n```\n\nAdditionally, if you want to return different status codes based on conditions, you can return a `JSONResponse` directly and set the `status_code` there as well.",
+      "citations": [
+        1120,
+        1709,
+        20,
+        1532
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 6140,
+      "cost_usd": 0.000669,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a001",
+      "question": "How does the get_current_user function retrieve user information from a token?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "The `get_current_user` function retrieves user information from a token by calling a utility function named `fake_decode_token`, which takes the token as a string and returns a Pydantic `User` model. The `fake_decode_token` function simulates decoding the token and creates a `User` instance with a username derived from the token and some predefined user details.",
+      "citations": [
+        1765,
+        1764
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5489,
+      "cost_usd": 0.000577,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a002",
+      "question": "What does the `jsonable_encoder` return when called?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "The `jsonable_encoder` returns a Python standard data structure (e.g. a `dict`) with values and sub-values that are all compatible with JSON.",
+      "citations": [
+        1386
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 4976,
+      "cost_usd": 0.000454,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a003",
+      "question": "How can I use a parameter name that isn't a valid Python variable in FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can use a parameter name that isn't a valid Python variable in FastAPI by declaring an alias for that parameter. For example, if you want the parameter to be `item-query`, you can declare it using `Query(alias='item-query')` in your function definition. This allows you to use `item_query` as the function parameter while still accepting `item-query` in the URL.",
+      "citations": [
+        1610
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5786,
+      "cost_usd": 0.000621,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a004",
+      "question": "How can I add extra details to a response in FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can add extra details to a response in FastAPI by using the `responses` parameter in your path operation decorator. This allows you to declare additional information such as status codes, media types, and descriptions. You can also combine this with a `response_model` to include custom examples or additional media types for the same response.",
+      "citations": [
+        16,
+        11,
+        8
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5841,
+      "cost_usd": 0.000509,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a005",
+      "question": "How can I access the raw request object in a FastAPI path operation function?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can access the raw request object in a FastAPI path operation function by declaring a parameter of type `Request`. FastAPI will then pass the `Request` object to that parameter, allowing you to access its properties directly.",
+      "citations": [
+        527,
+        1098
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5100,
+      "cost_usd": 0.000499,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": "The answer is grounded and directly addresses the question. However, it omits the fact that accessing the raw request object does not involve any validation."
+      }
+    },
+    {
+      "id": "a006",
+      "question": "How do I return an HTML response using Jinja2 in FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To return an HTML response using Jinja2 in FastAPI, you need to use the `Jinja2Templates` class to render a template. First, import `Jinja2Templates` and create a `templates` object. Then, declare a `Request` parameter in your path operation and use the `templates` object to render and return a `TemplateResponse`, passing the name of the template, the request object, and a context dictionary. Here is an example:\n\n```python\nfrom fastapi import FastAPI, Request\nfrom fastapi.templating import Jinja2Templates\n\napp = FastAPI()\n\ntemplates = Jinja2Templates(directory=\"templates\")\n\n@app.get(\"/items/{id}\")\nasync def read_item(request: Request, id: str):\n    return templates.TemplateResponse(\n        request=request, name=\"item.html\", context={\"id\": id}\n    )\n```",
+      "citations": [
+        504,
+        1122,
+        505
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 8938,
+      "cost_usd": 0.000594,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.6666666666666666,
+        "note": "The answer does not mention using the `HTMLResponse` class for the response type."
+      }
+    },
+    {
+      "id": "a007",
+      "question": "What happens if I include extra query parameters that are not defined in my FastAPI endpoint?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "If you include extra query parameters that are not defined in your FastAPI endpoint, you will receive an error response indicating that the extra inputs are not permitted. For example, if a client sends a query parameter that is not allowed, the response will detail the forbidden extra input and provide an error message.",
+      "citations": [
+        1583
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 4887,
+      "cost_usd": 0.000649,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a008",
+      "question": "What parameter should I use to create dependencies that work with both HTTP and WebSockets?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You should use a parameter that takes an `HTTPConnection` to create dependencies that work with both HTTP and WebSockets.",
+      "citations": [
+        1126,
+        1125
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3240,
+      "cost_usd": 0.000616,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a009",
+      "question": "How can I set my FastAPI path operation function names as operationIds?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can set your FastAPI path operation function names as operationIds by passing a custom `generate_unique_id_function` to `FastAPI`. This function receives each `APIRoute` and returns the `operationId` to use for that path operation. For example:\n\n```python\nfrom fastapi import FastAPI\nfrom fastapi.routing import APIRoute\n\ndef custom_generate_unique_id(route: APIRoute) -> str:\n    return route.name\n\napp = FastAPI(generate_unique_id_function=custom_generate_unique_id)\n\n@app.get(\"/items/\")\nasync def read_items():\n    return [{\"item_id\": \"Foo\"}]\n```\n\nMake sure each path operation function has a unique name, even if they are in different modules.",
+      "citations": [
+        219
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5325,
+      "cost_usd": 0.000676,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a010",
+      "question": "How do I import the StaticFiles class in my FastAPI application?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can import the StaticFiles class in your FastAPI application using the following line of code: `from fastapi.staticfiles import StaticFiles`.",
+      "citations": [
+        2011,
+        924
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3479,
+      "cost_usd": 0.0005,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": ""
+      }
+    },
+    {
+      "id": "a011",
+      "question": "How can I automate the migration from Pydantic v1 to v2?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can automate the migration from Pydantic v1 to v2 by using the tool `bump-pydantic`, which will help you automatically change most of the necessary code. After running this tool, you should run your tests to ensure everything works correctly. If `bump-pydantic` does not work for your use case, you can gradually migrate your models by first upgrading to Pydantic v2 and using the `pydantic.v1` submodule for your existing models, then migrating them in groups.",
+      "citations": [
+        997,
+        994,
+        1005
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5152,
+      "cost_usd": 0.00066,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a012",
+      "question": "How can I customize the route class for an APIRouter in FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can customize the route class for an APIRouter in FastAPI by setting the `route_class` parameter of the `APIRouter`. For example, you can create a custom route class by subclassing `APIRoute` and overriding the `get_route_handler` method. Then, you can pass this custom class when creating the router instance.",
+      "citations": [
+        954,
+        955,
+        956
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 4514,
+      "cost_usd": 0.000571,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a013",
+      "question": "How can I avoid calling an external authentication provider for every test in FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can avoid calling an external authentication provider for every test in FastAPI by overriding the dependency that calls that provider and using a custom dependency that returns a mock user, only for your tests.",
+      "citations": [
+        513
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3266,
+      "cost_usd": 0.000465,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a014",
+      "question": "What fields does the HeroPublic model include and how does it ensure the id is always present?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "The HeroPublic model includes the fields: id, name, and age. It ensures that the id is always present by re-declaring it as 'id: int', making a contract with the API clients that they can always expect the id to be there and to be an int (it will never be None).",
+      "citations": [
+        1958,
+        1985,
+        1959
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3488,
+      "cost_usd": 0.000688,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a015",
+      "question": "How do I use BackgroundTasks in my FastAPI application?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To use BackgroundTasks in your FastAPI application, first import BackgroundTasks and define a parameter in your path operation function with a type declaration of BackgroundTasks. Then, inside your path operation function, use the method .add_task() to schedule the execution of your background task. Here's an example:\n\n```python\nfrom fastapi import BackgroundTasks, FastAPI\n\napp = FastAPI()\n\ndef write_notification(email: str, message=\"\"):\n    with open(\"log.txt\", mode=\"w\") as email_file:\n        content = f\"notification for {email}: {message}\"\n        email_file.write(content)\n\n@app.post(\"/send-notification/{email}\")\nasync def send_notification(email: str, background_tasks: BackgroundTasks):\n    background_tasks.add_task(write_notification, email, message=\"some notification\")\n    return {\"message\": \"Notification sent in the background\"}\n```\n\nFastAPI will handle the creation of the BackgroundTasks object for you and pass it as a parameter.",
+      "citations": [
+        1129,
+        1132,
+        1085
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 4895,
+      "cost_usd": 0.000645,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a016",
+      "question": "How can I return different status codes for a FastAPI path operation?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can return different status codes for a FastAPI path operation by using the `status_code` parameter in the decorator for the path operation, or by declaring a `Response` parameter in your path operation function and setting its `status_code` attribute. Additionally, you can return a `Response` directly, such as a `JSONResponse`, and set the desired status code there.",
+      "citations": [
+        239,
+        1709,
+        20
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 7647,
+      "cost_usd": 0.000577,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a017",
+      "question": "How do I set up the token URL for OAuth2PasswordBearer in FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To set up the token URL for `OAuth2PasswordBearer` in FastAPI, you create an instance of `OAuth2PasswordBearer` and pass the `tokenUrl` parameter with the desired URL. For example: `oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')`. This indicates that the client will use the URL `/token` to send the `username` and `password` to obtain a token.",
+      "citations": [
+        1751,
+        1753
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3635,
+      "cost_usd": 0.000546,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a018",
+      "question": "What happens if I try to create an item that already exists in the database?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "If you try to create an item that already exists in the database, the response will have a status code of 409 and the detail will indicate that the item already exists.",
+      "citations": [
+        2039,
+        2045
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 2911,
+      "cost_usd": 0.000567,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": ""
+      }
+    },
+    {
+      "id": "a019",
+      "question": "What are environment variables used for in FastAPI applications?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "Environment variables in FastAPI applications are used for configuration such as database URLs, email credentials, and secret keys. They allow the application to read external settings that can change and may include sensitive information, making them a common practice for managing application configuration.",
+      "citations": [
+        827,
+        385
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3174,
+      "cost_usd": 0.00049,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a020",
+      "question": "What format should the `data` field be in when sending a request to the `/data` endpoint?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "The `data` field should be in base64 encoded bytes format when sending a request to the `/data` endpoint.",
+      "citations": [
+        174
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 2763,
+      "cost_usd": 0.000453,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": "The answer correctly states that the `data` field should be in base64 encoded bytes format, but it does not include the example of valid data or mention that the request should include a description."
+      }
+    },
+    {
+      "id": "a021",
+      "question": "What happens if I set fields in my data to the same values as their defaults?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "If you set fields in your data to the same values as their defaults, FastAPI (via Pydantic) will recognize that those fields were set explicitly, and they will be included in the response. This means that even if the values match the defaults, they will still appear in the output because they were provided in the input data.",
+      "citations": [
+        1701
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3318,
+      "cost_usd": 0.000612,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a022",
+      "question": "What library is recommended for using GraphQL with FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "The recommended library for using GraphQL with FastAPI is **Strawberry**.",
+      "citations": [
+        988
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 2569,
+      "cost_usd": 0.00054,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": "The answer correctly identifies Strawberry as the recommended library, but it does not mention that Strawberry's design is based on type annotations or that it integrates well with FastAPI."
+      }
+    },
+    {
+      "id": "a023",
+      "question": "How can I upload multiple files using FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To upload multiple files using FastAPI, you can declare a list of `bytes` or `UploadFile` in your path operation function. For example:\n\n```python\n@app.post(\"/files/\")\nasync def create_files(files: Annotated[list[bytes], File()]):\n    return {\"file_sizes\": [len(file) for file in files]}\n\n@app.post(\"/uploadfiles/\")\nasync def create_upload_files(files: list[UploadFile]):\n    return {\"filenames\": [file.filename for file in files]}\n```\n\nYou can also create an HTML form to allow users to upload multiple files by using the `multiple` attribute in the file input field.",
+      "citations": [
+        1645,
+        1646
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 6145,
+      "cost_usd": 0.000598,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.75,
+        "note": "The answer does not explicitly mention using the endpoint '/uploadfiles/' with a POST request."
+      }
+    },
+    {
+      "id": "a024",
+      "question": "How can I create and return a cookie in a FastAPI response?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can create and return a cookie in a FastAPI response by either returning a `Response` directly or by using a `Response` parameter in your path operation function. For example:\n\n1. **Returning a Response directly:**\n   ```python\n   from fastapi import FastAPI\n   from fastapi.responses import JSONResponse\n\n   app = FastAPI()\n\n   @app.post(\"/cookie/\")\n   def create_cookie():\n       content = {\"message\": \"Come to the dark side, we have cookies\"}\n       response = JSONResponse(content=content)\n       response.set_cookie(key=\"fakesession\", value=\"fake-cookie-session-value\")\n       return response\n   ```\n\n2. **Using a Response parameter:**\n   ```python\n   from fastapi import FastAPI, Response\n\n   app = FastAPI()\n\n   @app.post(\"/cookie-and-object/\")\n   def create_cookie(response: Response):\n       response.set_cookie(key=\"fakesession\", value=\"fake-cookie-session-value\")\n       return {\"message\": \"Come to the dark side, we have cookies\"}\n   ```",
+      "citations": [
+        243,
+        241
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5885,
+      "cost_usd": 0.000626,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a025",
+      "question": "Can I declare parameters in any order when using FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "Yes, you don't have to declare parameters in any specific order when using FastAPI. FastAPI will detect them by name.",
+      "citations": [
+        1628,
+        1550
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 2619,
+      "cost_usd": 0.000502,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.75,
+        "note": ""
+      }
+    },
+    {
+      "id": "a026",
+      "question": "How do I run my FastAPI server with environment variables for configuration?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To run your FastAPI server with environment variables for configuration, you can set the environment variables before the command to run the server. For example, you can use the following command in your terminal:\n\n```console\n$ ADMIN_EMAIL=\"deadpool@example.com\" APP_NAME=\"ChimichangApp\" uv run fastapi run main.py\n```\n\nAlternatively, in PowerShell, you can set the environment variables like this:\n\n```console\n$ $Env:ADMIN_EMAIL = \"deadpool@example.com\"\n$ $Env:APP_NAME = \"ChimichangApp\"\n$ uv run fastapi run main.py\n```\n\nThis allows your application to read the specified environment variables for configuration.",
+      "citations": [
+        827,
+        393
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 6071,
+      "cost_usd": 0.000636,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": "The answer is grounded and relevant, but it omits the specific command format and the explanation about the 'admin_email' setting being set to the value provided for ADMIN_EMAIL."
+      }
+    },
+    {
+      "id": "a027",
+      "question": "How can I use Enums for tags in my FastAPI application?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can use Enums for tags in your FastAPI application by defining an Enum class and using its members as tags in your path operations. For example:\n\n```python\nfrom enum import Enum\n\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\nclass Tags(Enum):\n    items = \"items\"\n    users = \"users\"\n\n@app.get(\"/items/\", tags=[Tags.items])\nasync def get_items():\n    return [\"Portal gun\", \"Plumbus\"]\n\n@app.get(\"/users/\", tags=[Tags.users])\nasync def read_users():\n    return [\"Rick\", \"Morty\"]\n```",
+      "citations": [
+        1535
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5734,
+      "cost_usd": 0.000623,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a028",
+      "question": "How do I start the FastAPI server in production mode?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To start the FastAPI server in production mode, use the command `fastapi run`.",
+      "citations": [
+        840,
+        787
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3079,
+      "cost_usd": 0.000646,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.33,
+        "note": "The answer correctly states the command to start the FastAPI server in production mode, but it omits the server's default address and the documentation link."
+      }
+    },
+    {
+      "id": "a029",
+      "question": "What advanced features can I learn about in the tutorial user guide?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "The tutorial user guide mentions that there is an Advanced User Guide that builds on the concepts from the tutorial and teaches some extra features. However, it does not specify what those advanced features are.",
+      "citations": [
+        1503
+      ],
+      "attempts": 2,
+      "verdict": "grounded",
+      "latency_ms": 9771,
+      "cost_usd": 0.00084,
+      "judged": {
+        "grounded": true,
+        "relevancy": 0.8,
+        "facts_covered": 0.0,
+        "note": "The answer correctly states that the Advanced User Guide builds on the tutorial and mentions extra features, but it does not specify any of those advanced features."
+      }
+    },
+    {
+      "id": "a030",
+      "question": "How do I import the TestClient to test my FastAPI application?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can import the TestClient by using the following line of code: `from fastapi.testclient import TestClient`.",
+      "citations": [
+        1123
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3919,
+      "cost_usd": 0.000457,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": ""
+      }
+    },
+    {
+      "id": "a031",
+      "question": "How can I apply a dependency to all path operations in my FastAPI application?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To apply a dependency to all path operations in your FastAPI application, you can add the dependency to the FastAPI application itself. This way, the dependency will be applied to every path operation in the application.",
+      "citations": [
+        1348
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3866,
+      "cost_usd": 0.000458,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": ""
+      }
+    },
+    {
+      "id": "a032",
+      "question": "Why do I need to declare the path for '/users/me' before '/users/{user_id}'?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You need to declare the path for '/users/me' before '/users/{user_id}' because path operations are evaluated in order. If '/users/{user_id}' is declared first, it would match '/users/me' as well, interpreting 'me' as a user ID, which is not the intended behavior.",
+      "citations": [
+        1565
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3762,
+      "cost_usd": 0.000514,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a033",
+      "question": "What are the benefits of using OpenAPI with FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "The benefits of using OpenAPI with FastAPI include the ability to have multiple automatic interactive documentation interfaces, code generation for clients that communicate with the API, and the definition of multiple security schemes. OpenAPI also allows for easier implementation of webhooks and integrates with authentication/authorization providers. Additionally, FastAPI automatically incorporates dependencies and validations into the OpenAPI schema, enhancing the interactive documentation systems.",
+      "citations": [
+        1781,
+        1424,
+        214,
+        1373
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 4354,
+      "cost_usd": 0.000537,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a034",
+      "question": "How do I define an async endpoint that streams JSON items in FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To define an async endpoint that streams JSON items in FastAPI, you can use the following code:\n\n```python\nfrom collections.abc import AsyncIterable\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass Item(BaseModel):\n    name: str\n    description: str | None\n\nitems = [\n    Item(name=\"Plumbus\", description=\"A multi-purpose household device.\"),\n    Item(name=\"Portal Gun\", description=\"A portal opening device.\"),\n    Item(name=\"Meeseeks Box\", description=\"A box that summons a Meeseeks.\"),\n]\n\n@app.get(\"/items/stream\")\nasync def stream_items() -> AsyncIterable[Item]:\n    for item in items:\n        yield item\n```\n\nThis code defines an endpoint at `/items/stream` that yields items of type `Item` asynchronously.",
+      "citations": [
+        2021,
+        2022,
+        2020
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5717,
+      "cost_usd": 0.000664,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a035",
+      "question": "How can I convert input data to JSON format when updating an item in FastAPI?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can convert input data to JSON format when updating an item in FastAPI by using the `jsonable_encoder` function. This function converts the Pydantic model to a dictionary with JSON-compatible types, which can then be returned in a `JSONResponse`. For example:\n\n```python\njson_compatible_item_data = jsonable_encoder(item)\nreturn JSONResponse(content=json_compatible_item_data)\n```",
+      "citations": [
+        249,
+        1385
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 4218,
+      "cost_usd": 0.00062,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": "The answer does not mention that the `jsonable_encoder` converts `datetime` to a string, but it does explain the conversion of the Pydantic model to a dictionary."
+      }
+    },
+    {
+      "id": "a036",
+      "question": "What methods can I use with the FastAPI class?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "The methods you can use with the FastAPI class include: openapi_version, webhooks, state, dependency_overrides, openapi, websocket, include_router, frontend, get, put, post, delete, options, head, patch, trace, on_event, middleware, and exception_handler.",
+      "citations": [
+        1089
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3930,
+      "cost_usd": 0.000505,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a037",
+      "question": "How do I add metadata for tags in my FastAPI application?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To add metadata for tags in your FastAPI application, create a list of dictionaries containing the tag names and their descriptions, and pass this list to the `openapi_tags` parameter when initializing the FastAPI app. For example:\n\n```python\nfrom fastapi import FastAPI\n\ntags_metadata = [\n    {\n        \"name\": \"users\",\n        \"description\": \"Operations with users. The **login** logic is also here.\",\n    },\n    {\n        \"name\": \"items\",\n        \"description\": \"Manage items. So _fancy_ they have their own docs.\",\n        \"externalDocs\": {\n            \"description\": \"Items external docs\",\n            \"url\": \"https://fastapi.tiangolo.com/\",\n        },\n    },\n]\n\napp = FastAPI(openapi_tags=tags_metadata)\n```\nYou can then use the `tags` parameter in your path operations to assign them to the respective tags.",
+      "citations": [
+        1508,
+        1514,
+        1516
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 5872,
+      "cost_usd": 0.000601,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": "The answer does not mention that you don't need to add metadata for every tag you use."
+      }
+    },
+    {
+      "id": "a038",
+      "question": "How can I get the client's IP address in a FastAPI endpoint?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To get the client's IP address in a FastAPI endpoint, you can access the `Request` object directly and use `request.client.host`. Here is an example:\n\n```python\nfrom fastapi import FastAPI, Request\n\napp = FastAPI()\n\n@app.get(\"/items/{item_id}\")\ndef read_root(item_id: str, request: Request):\n    client_host = request.client.host\n    return {\"client_host\": client_host, \"item_id\": item_id}\n```",
+      "citations": [
+        527
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3663,
+      "cost_usd": 0.000602,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a039",
+      "question": "How do I handle authentication errors in FastAPI using a 403 status code?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To handle authentication errors in FastAPI using a 403 status code, you can create a subclass of `HTTPBearer` and override the `make_not_authenticated_error` method to return an `HTTPException` with a status code of `403 Forbidden`. Here is an example:\n\n```python\nfrom fastapi import Depends, FastAPI, HTTPException, status\nfrom fastapi.security import HTTPAuthorizationCredentials, HTTPBearer\n\napp = FastAPI()\n\nclass HTTPBearer403(HTTPBearer):\n    def make_not_authenticated_error(self) -> HTTPException:\n        return HTTPException(\n            status_code=status.HTTP_403_FORBIDDEN, detail=\"Not authenticated\"\n        )\n\nCredentialsDep = Annotated[HTTPAuthorizationCredentials, Depends(HTTPBearer403())]\n\n@app.get(\"/me\")\ndef read_me(credentials: CredentialsDep):\n    return {\"message\": \"You are authenticated\", \"token\": credentials.credentials}\n```\nThis will ensure that a 403 error is returned instead of the default 401 error when authentication fails.",
+      "citations": [
+        866,
+        868
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 6933,
+      "cost_usd": 0.000664,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 0.67,
+        "note": "The answer is grounded in the context and directly addresses the question. However, it only partially covers the key facts, missing the specific mention of returning the exception instance instead of raising it."
+      }
+    },
+    {
+      "id": "a040",
+      "question": "How does Pydantic v2 affect the OpenAPI schemas generated for my models?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "Since Pydantic v2 was released, the generated OpenAPI is more exact and correct than before. In some cases, it will even have two JSON Schemas in OpenAPI for the same Pydantic model, for input and output, depending on if they have default values.",
+      "citations": [
+        1006
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3349,
+      "cost_usd": 0.000569,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a041",
+      "question": "How does FastAPI determine if a function parameter is a query parameter or a request body?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "FastAPI determines if a function parameter is a query parameter or a request body based on the following rules: If the parameter is declared in the path, it is a path parameter. If the parameter is of a singular type (like int, float, str, bool, etc.), it is interpreted as a query parameter. If the parameter is declared as a type of a Pydantic model, it is interpreted as a request body.",
+      "citations": [
+        1258
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3218,
+      "cost_usd": 0.000632,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a042",
+      "question": "Can I call the say_hi function without providing a name?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "No, you cannot call the say_hi function without providing a name. It throws an error if called without the parameter, even though the parameter accepts None as a valid value.",
+      "citations": [
+        51
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 3263,
+      "cost_usd": 0.000588,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a043",
+      "question": "How can I define file and form parameters in a FastAPI endpoint?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "You can define file and form parameters in a FastAPI endpoint by using the `File` and `Form` classes. For example:\n\n```python\nfrom typing import Annotated\nfrom fastapi import FastAPI, File, Form, UploadFile\n\napp = FastAPI()\n\n@app.post(\"/files/\")\nasync def create_file(\n    file: Annotated[bytes, File()],\n    fileb: Annotated[UploadFile, File()],\n    token: Annotated[str, Form()],\n):\n    return {\n        \"file_size\": len(file),\n        \"token\": token,\n        \"fileb_content_type\": fileb.content_type,\n    }\n```\n\nIn this example, `file` is defined as `bytes` using `File()`, `fileb` is defined as `UploadFile` using `File()`, and `token` is defined as a string using `Form()`.",
+      "citations": [
+        1658,
+        1634
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 6298,
+      "cost_usd": 0.000671,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "a044",
+      "question": "How do I create a Pydantic model to validate user data?",
+      "answerable": true,
+      "abstained": false,
+      "blocked": null,
+      "answer": "To create a Pydantic model to validate user data, you declare a class that inherits from `BaseModel` and define the attributes with their types. For example:\n\n```python\nfrom pydantic import BaseModel\n\nclass User(BaseModel):\n    username: str\n    email: str | None = None\n    full_name: str | None = None\n    disabled: bool | None = None\n```\n\nYou can then create an instance of this model with user data, and it will validate the data automatically.",
+      "citations": [
+        1760,
+        1396
+      ],
+      "attempts": 1,
+      "verdict": "grounded",
+      "latency_ms": 4055,
+      "cost_usd": 0.000589,
+      "judged": {
+        "grounded": true,
+        "relevancy": 1.0,
+        "facts_covered": 1.0,
+        "note": ""
+      }
+    },
+    {
+      "id": "u000",
+      "question": "How do I configure Django settings using django-environ?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1537,
+      "cost_usd": 0.000188,
+      "judged": null
+    },
+    {
+      "id": "u001",
+      "question": "How do I register a Django model in the admin site?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1141,
+      "cost_usd": 0.000237,
+      "judged": null
+    },
+    {
+      "id": "u002",
+      "question": "What's the syntax for a Flask blueprint with a URL prefix?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1221,
+      "cost_usd": 0.000231,
+      "judged": null
+    },
+    {
+      "id": "u003",
+      "question": "How do I use Django's ORM to do a select_related query?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1142,
+      "cost_usd": 0.000252,
+      "judged": null
+    },
+    {
+      "id": "u004",
+      "question": "How do I write a Rails ActiveRecord migration?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1155,
+      "cost_usd": 0.000269,
+      "judged": null
+    },
+    {
+      "id": "u005",
+      "question": "What is the maximum number of concurrent WebSocket connections FastAPI supports by default?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1207,
+      "cost_usd": 0.000281,
+      "judged": null
+    },
+    {
+      "id": "u006",
+      "question": "What is FastAPI's default request timeout in seconds?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1253,
+      "cost_usd": 0.000249,
+      "judged": null
+    },
+    {
+      "id": "u007",
+      "question": "How many worker processes does FastAPI spawn by default?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1213,
+      "cost_usd": 0.000283,
+      "judged": null
+    },
+    {
+      "id": "u008",
+      "question": "What is the default maximum request body size in FastAPI?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1183,
+      "cost_usd": 0.000217,
+      "judged": null
+    },
+    {
+      "id": "u009",
+      "question": "How do I enable FastAPI's built-in rate limiter?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1161,
+      "cost_usd": 0.000229,
+      "judged": null
+    },
+    {
+      "id": "u010",
+      "question": "How do I use the @app.cache decorator to cache a response?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1134,
+      "cost_usd": 0.000225,
+      "judged": null
+    },
+    {
+      "id": "u011",
+      "question": "How do I configure FastAPI's built-in Redis session backend?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1165,
+      "cost_usd": 0.000204,
+      "judged": null
+    },
+    {
+      "id": "u012",
+      "question": "What did FastAPI change in version 0.200.0?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1213,
+      "cost_usd": 0.00024,
+      "judged": null
+    },
+    {
+      "id": "u013",
+      "question": "How do I use FastAPI's GraphQL subscriptions support?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1198,
+      "cost_usd": 0.000252,
+      "judged": null
+    },
+    {
+      "id": "u014",
+      "question": "What is the license fee for FastAPI Enterprise?",
+      "answerable": false,
+      "abstained": true,
+      "blocked": null,
+      "answer": "I don't have enough information in the indexed FastAPI documentation to answer that accurately.",
+      "citations": [],
+      "attempts": 1,
+      "verdict": "ungrounded",
+      "latency_ms": 1133,
+      "cost_usd": 0.000255,
+      "judged": null
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+# The corpus integrity check hashes chunks.jsonl and compares it to MANIFEST.json.
+# Git's autocrlf would rewrite line endings on checkout, changing the hash and
+# failing CI on Linux for a file nobody edited. Pin everything to LF.
+* text=auto eol=lf
+
+*.npy binary
+*.png binary
+*.jpg binary
