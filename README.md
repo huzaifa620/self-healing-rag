@@ -4,7 +4,7 @@
 
 Most RAG demos prove someone can wire up a retrieval chain. Almost none prove the thing works — or would notice if it stopped. This one is built around measurement: it answers questions about the FastAPI documentation, grades every answer for grounding before returning it, abstains when the docs don't support an answer, and fails its own CI build if quality drops.
 
-> **[ADD SCREENSHOT HERE]** — a red CI check reading *"hallucination rate 11.2% exceeds 5.0% threshold — blocking merge"*. See [Reproducing the failure](#reproducing-the-failure).
+> **See the gate block a regression:** [PR #2](https://github.com/huzaifa620/self-healing-rag/pull/2) softens the generator prompt, and CI fails it with *"hallucination rate 11.4% exceeds 5.0% threshold — blocking merge"* (false-answer rate 20.0%). It stays open on purpose. See also [Reproducing the failure](#reproducing-the-failure).
 
 ---
 
@@ -133,7 +133,7 @@ git checkout -b regress
 python -m evals.run_evals && python -m pytest evals/test_gates.py   # fails
 ```
 
-CI runs the same two commands on every push and posts the metrics table as a PR comment.
+CI runs the same two commands on every push and posts the metrics table as a PR comment. [PR #2](https://github.com/huzaifa620/self-healing-rag/pull/2) is a live example.
 
 ---
 
